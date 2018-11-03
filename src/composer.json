@@ -1,0 +1,17 @@
+{
+    "name": "root/detectify",
+    "description": "A simple Guestbook application as part of Detectify interview",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Satheesh Thangavel",
+            "email": "satheeshmca110@gmail.com"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "Detectify\\" : "app"
+        }
+    },
+    "require": {}
+}

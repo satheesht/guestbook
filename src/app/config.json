@@ -1,0 +1,84 @@
+{
+  "routes":{
+    "get" :[
+      {
+        "uri" : "/home",
+        "handler":"Login",
+        "action":"home",
+        "auth" : false
+      },
+      {
+        "uri":"/register",
+        "handler":"Login",
+        "action":"register",
+        "auth" : false
+      },
+      {
+        "uri":"/logout",
+        "handler":"Login",
+        "action":"logout",
+        "auth" : false
+      },
+      {
+        "uri":"/dashboard",
+        "handler":"Dashboard",
+        "action":"home",
+        "auth" : true
+      },
+      {
+        "uri":"/getReplies",
+        "handler":"Message",
+        "action":"getReplies",
+        "auth" : true
+      }
+    ],
+    "post":[
+      {
+        "uri":"/register",
+        "handler": "Login",
+        "action":"register",
+        "auth" : false
+      },
+      {
+        "uri":"/auth",
+        "handler":"Login",
+        "action":"auth",
+        "auth" : false
+      },
+      {
+        "uri":"/message",
+        "handler":"Message",
+        "action":"newMessage",
+        "auth" : true
+      },
+      {
+        "uri":"/replyMessage",
+        "handler":"Message",
+        "action":"replyMessage",
+        "auth" : true
+      }
+    ],
+    "delete":[
+      {
+        "uri" : "/message",
+        "handler": "Message",
+        "action" : "deleteMessage"
+      }
+    ],
+    "put":[
+      {
+        "uri":"/message",
+        "handler":"Message",
+        "action":"editMessage",
+        "auth" : true
+      }
+    ]
+  },
+  "database":{
+    "host": "mariadb",
+    "port":"3306",
+    "username": "app",
+    "password" : "password",
+    "database": "guestbook"
+  }
+}

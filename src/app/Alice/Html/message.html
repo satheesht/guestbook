@@ -1,0 +1,24 @@
+<div class="media text-muted pt-3">
+    <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <div class="d-flex justify-content-between align-items-center w-100">
+            <strong class="text-gray-dark">{#firstname#} {#lastname#}</strong>
+            <div>
+                <a href="#">Edit</a> &nbsp;
+                <a href="#" data-id="{#messageId#}" class="delete">Delete</a>
+            </div>
+
+        </div>
+        <span class="d-block">{#message#}</span>
+        <a href="#" class="viewReplies" data-id="{#messageId#}">View replies</a>
+        <div class="replies" id="reppliesList-{#messageId#}">
+            <div class="content">
+
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" id="replyMessageBox-{#messageId#}" rows="3"></textarea>
+                <br>
+                <button type="button" data-id="{#messageId#}" class="btn btn-info reply">Reply</button>
+            </div>
+        </div>
+    </div>
+</div>

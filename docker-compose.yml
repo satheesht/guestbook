@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+
+### NGINX Container ########################################
+  nginx:
+    image: detectify/nginx
+    build:
+      context: ./docker/nginx
+    ports:
+      - "${HTTP_PORT}:80"
+    restart: always
+    volumes:
+      - ./src:/var/www/detectify
+    networks:
+      - backend
+### PHP Container ########################################
+  php-fpm:
+    image: detectify/php
+    build:
+      context: ./docker/php
+    ports:
+      - "${PHP_PORT}:9000"
+    volumes:
+      - ./src:/var/www/detectify
+    restart: always
+    networks:
+      - backend
+
+  ### MariaDB Container #######################################
+  mariadb:
+    image: detectify/mariadb
+    build:
+      context: ./docker/mariadb
+    volumes:
+      - ${DATABASE_SAVE_PATH}:/var/lib/mysql
+    expose:
+      - "3306"
+    ports:
+      - "33061:3306"
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${MARIADB_DATABASE}
+      - MYSQL_USER=${MARIADB_USER}
+      - MYSQL_PASSWORD=${MARIADB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+    networks:
+      - backend
+
+### Networks Setup ###########################################
+networks:
+  backend:
+    driver: "bridge"
