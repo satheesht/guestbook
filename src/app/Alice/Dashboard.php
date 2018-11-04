@@ -30,7 +30,7 @@ class Dashboard extends Alice
         $dashboardHtml = $this->getHtml("dashboard");
         $finalHtml = $this->applyData($dashboardHtml, [
             "messages" => $html
-        ]);
+        ], true);
         $this->renderHtml($finalHtml);
     }
 

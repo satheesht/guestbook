@@ -26,7 +26,6 @@ class Message extends Handler
             self::MESSAGE => $request->payload->message,
             self::ID_USER => Session::getUserId()
         ];
-
         if($this->notNullValidation($data, [self::MESSAGE, self::ID_USER])){
             $message = new \Detectify\Models\Message();
             if($message->create($data)){
@@ -49,7 +48,6 @@ class Message extends Handler
             self::ID_USER   => Session::getUserId(),
             "id"            => $request->payload->id
         ];
-
         if($this->notNullValidation($data, [self::MESSAGE, self::ID_USER, "id"])){
             $message = new \Detectify\Models\Message();
             if($message->editMessage($data)){
@@ -71,7 +69,6 @@ class Message extends Handler
             self::ID_USER   => Session::getUserId(),
             "id"            => $request->payload->id
         ];
-
         if($this->notNullValidation($data, [self::ID_USER, "id"])){
             $message = new \Detectify\Models\Message();
             if($message->deleteMessage($data)){

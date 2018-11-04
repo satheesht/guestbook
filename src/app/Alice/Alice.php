@@ -53,9 +53,12 @@ class Alice
         }
     }
 
-    final protected function applyData($html, $data){
+    final protected function applyData($html, $data, $isHtml = false){
         foreach($data as $find => $replace){
-            $html = str_replace("{#".$find."#}", $replace,$html);
+            if(!$isHtml){
+                $replace = htmlentities($replace);
+            }
+            $html = str_replace("{#".$find."#}", $replace, $html);
         }
         return $html;
     }
@@ -118,7 +121,7 @@ class Alice
         foreach($cssFiles as $css){
             $links.= str_replace('[]','css/'.$css.'.css', $linkTemplate);
         }
-        $this->header = $this->applyData($this->header, ["customCss" => $links]);
+        $this->header = $this->applyData($this->header, ["customCss" => $links], true);
     }
 
     /**
@@ -130,6 +133,6 @@ class Alice
         foreach($cssFiles as $css){
             $links.= str_replace('[]','js/'.$css.'.js', $linkTemplate);
         }
-        $this->footer = $this->applyData($this->footer, ["customJs" => $links]);
+        $this->footer = $this->applyData($this->footer, ["customJs" => $links], true);
     }
 }

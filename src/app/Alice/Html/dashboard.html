@@ -1,13 +1,10 @@
 <div class="my-3 p-3 bg-white rounded shadow-sm">
     <div class="form-group">
-        <label for="exampleFormControlTextarea1">New message</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="newMessageTextarea">New message</label>
+        <textarea class="form-control" id="newMessageTextarea" data-update-id="" rows="3"></textarea>
     </div>
-    <button type="button" class="btn btn-info">Submit</button>
+    <button type="button" id="newMessageSubmit" class="btn btn-info">Submit</button>
     <Br><br>
     <h6 class="border-bottom border-gray pb-2 mb-0">Messages</h6>
     {#messages#}
-    <small class="d-block text-right mt-3">
-        <a href="#">All updates</a>
-    </small>
 </div>

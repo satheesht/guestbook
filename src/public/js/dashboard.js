@@ -19,17 +19,46 @@ $(function(){
         });
     });
 
-    $(".delete").click(function(){
+    $(".delete").click(function(e){
+        e.preventDefault();
         var messageId = $(this).data("id");
         console.log(messageId);
         $.ajax({
-            url:"/message",
+            url:"/message?id="+messageId,
             method: "delete",
-            data:{id:messageId},
-            success: function(result){
+            success: function(){
                 location.reload(1);
             }
         });
+    });
+
+    $("#newMessageSubmit").click(function(e){
+        e.preventDefault();
+        var message = $("#newMessageTextarea").val();
+        var messageId = $("#newMessageTextarea").data("update-id");
+        var method = messageId?"put":"post";
+        $.ajax({
+            url: "/message",
+            method: method,
+            data: JSON.stringify({message:message, id:messageId}),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(){
+                window.location.reload(1);
+            }
+        });
+    });
+
+    $(".edit").click(function(e){
+        e.preventDefault();
+        var messageId = $(this).data("id");
+        var message = $(this).data("message");
+        $("#newMessageSubmit").html("Update");
+        $("#newMessageTextarea")
+            .data("update-id", messageId)
+            .val(message)
+            .focus();
+
     });
 
     function refreshReplies(messageId){
@@ -53,13 +82,17 @@ $(function(){
                 '<div>'+
                 '<div class="media text-muted pt-3">'+
                 '<p class="media-body pb-3 mb-0 small lh-125">'+
-                '<strong class="d-block text-gray-dark">'+result[i][2]+' '+result[i][3]+'</strong>'+
-                result[i][0]+
+                '<strong class="d-block text-gray-dark">'+htmlEntities(result[i][2])+' '+htmlEntities(result[i][3])+'</strong>'+
+                htmlEntities(result[i][0])+
                 '</p>'+
                 '</div>'+
                 '</div>';
         }
         $("#reppliesList-"+messageId).fadeIn().find(".content").html(template);
+    }
+
+    function htmlEntities(str) {
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
 

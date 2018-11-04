@@ -107,7 +107,7 @@ class RoutingManager
      */
     public function getPayload()
     {
-        if(in_array($this->reqMethod,['get'])){
+        if(in_array($this->reqMethod,['get','delete'])){
             return (object) $_REQUEST;
         }else{
             $request_body = json_decode(file_get_contents('php://input'));

@@ -62,7 +62,8 @@
       {
         "uri" : "/message",
         "handler": "Message",
-        "action" : "deleteMessage"
+        "action" : "deleteMessage",
+        "auth"   : true
       }
     ],
     "put":[
