@@ -11,7 +11,7 @@ namespace Detectify\Alice;
 
 class Dashboard extends Alice
 {
-    protected $title = 'Detectify Guestbook';
+    protected $title = 'Guestbook';
 
     public function home($messages)
     {

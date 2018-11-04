@@ -47,7 +47,7 @@ class Login extends Handler
                 Response::redirect('/dashboard');
 
             }else{
-                Response::json(self::SUCCESS_FALSE, 401);
+                Response::redirect('/home',401);
             }
         }else{
             Response::json(self::SUCCESS_FALSE, 400);
@@ -76,7 +76,7 @@ class Login extends Handler
             }
 
             if($success){
-                Response::json(self::SUCCESS);
+                Response::redirect("/home");
             }else{
                 Response::json(self::SUCCESS_FALSE, 400);
             }
@@ -88,8 +88,7 @@ class Login extends Handler
 
     public function logout(Request $request)
     {
-        session_start();
-        session_destroy();
+        Session::getInstance()->destroy();
         Response::redirect("/home");
     }
 

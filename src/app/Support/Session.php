@@ -83,4 +83,13 @@ class Session
     {
         return !empty($_SESSION['user']) && !empty($_SESSION['email']);
     }
+
+    /**
+     * Destroy the session
+     */
+    public function destroy()
+    {
+        $this->startSession();
+        session_destroy();
+    }
 }

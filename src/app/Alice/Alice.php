@@ -16,7 +16,7 @@ use Exception;
 class Alice
 {
 
-    protected $title = 'Detectify Guestbook';
+    protected $title = 'Guestbook';
 
     protected $header;
 

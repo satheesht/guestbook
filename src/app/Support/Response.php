@@ -39,8 +39,13 @@ class Response
         echo $exception->getMessage();
     }
 
-    public static function redirect($path)
+    /**
+     * @param $path
+     * @param int $responseCode
+     */
+    public static function redirect($path , $responseCode = 200)
     {
+        http_response_code($responseCode);
         header("location: ".$path);
     }
 }

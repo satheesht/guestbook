@@ -11,21 +11,18 @@ namespace Detectify\Alice;
 
 class Login extends Alice
 {
-    protected $title = 'Detectify Guestbook';
+    protected $title = 'Guestbook';
 
     public function home(){
         $this->addCustomCss(['signin']);
+        $this->addCustomJs(['signin']);
         $this->renderView("loginForm");
     }
 
     public function register(){
         $this->addCustomCss(['register']);
+        $this->addCustomJs(['register']);
         $this->renderView("registrationForm");
-    }
-
-    public function registerSubmit($payload)
-    {
-
     }
 
     public static function get()
