@@ -8,6 +8,11 @@
 namespace Detectify\Traits;
 use Detectify\Exceptions\CouldNotSetEnvException;
 
+/**
+ * Reading environment file : Inspired by Dotenv package php
+ * Trait Env
+ * @package Detectify\Traits
+ */
 Trait Env{
 
 

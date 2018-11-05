@@ -8,7 +8,11 @@
 
 namespace Detectify\Support;
 
-
+/**
+ * Intend to scale further. Essentially, used to transfer request data between classes
+ * Class Request
+ * @package Detectify\Support
+ */
 class Request
 {
     public $method;

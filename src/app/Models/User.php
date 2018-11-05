@@ -32,6 +32,11 @@ class User extends Sanitizer
         return $this->connection->query($query);
     }
 
+    /**
+     * Checks user authentication
+     * @param $user
+     * @return bool
+     */
     public function checkAuth($user)
     {
         $user = $this->sanitizeFields($this->connection, $user);

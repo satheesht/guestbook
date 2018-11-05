@@ -11,6 +11,11 @@ namespace Detectify\Support;
 use Detectify\Exceptions\RoutesNotExistException;
 use Detectify\Traits\Config;
 
+/**
+ * Responsible for request handling and returns handler to the app class
+ * Class RoutingManager
+ * @package Detectify\Support
+ */
 class RoutingManager
 {
     use Config;
@@ -18,10 +23,16 @@ class RoutingManager
     protected $routes;
 
     /**
+     * Request object
      * @var Request
      */
     public $request;
 
+    /**
+     * These are the available verbs.
+     * Add more when you try to add new endpoints
+     * @var array
+     */
     protected $allowedHttpVerbs = [
         "get",
         "post",
@@ -29,8 +40,15 @@ class RoutingManager
         "put"
     ];
 
+    /**
+     * Request http verb
+     * @var
+     */
     protected $reqMethod;
 
+    /**
+     * RoutingManager constructor.
+     */
     public function __construct()
     {
         $this->loadRequestObject();
@@ -56,6 +74,7 @@ class RoutingManager
     }
 
     /**
+     * Raw routes, parse it to route property
      * @param $rawRoutes
      * @throws RoutesNotExistException
      */
@@ -74,7 +93,7 @@ class RoutingManager
     }
 
     /**
-     *
+     * Constructs request object
      */
     public function loadRequestObject()
     {
@@ -103,6 +122,7 @@ class RoutingManager
     }
 
     /**
+     * Parse payload
      * @return mixed|object
      */
     public function getPayload()
@@ -119,14 +139,18 @@ class RoutingManager
     }
 
     /**
+     * 404 thrower
      * @throws RoutesNotExistException
      */
     private function throw404(){
         throw new RoutesNotExistException();
     }
 
-
-
+    /**
+     * removes trailing slash from request URI
+     * @param $string
+     * @return bool|string
+     */
     public function removeTrailingSlash($string)
     {
         if(substr($string, -1) == '/') {

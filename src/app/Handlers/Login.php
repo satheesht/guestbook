@@ -28,6 +28,7 @@ class Login extends Handler
     }
 
     /**
+     * User authentication
      * @param Request $request
      */
     public function auth(Request $request)
@@ -55,6 +56,7 @@ class Login extends Handler
     }
 
     /**
+     * Registers a new user handler
      * @param Request $request
      */
     public function register(Request $request)
@@ -86,6 +88,10 @@ class Login extends Handler
 
     }
 
+    /**
+     * Logout handler
+     * @param Request $request
+     */
     public function logout(Request $request)
     {
         Session::getInstance()->destroy();
@@ -93,6 +99,7 @@ class Login extends Handler
     }
 
     /**
+     * Validates an email
      * @param $email
      * @return mixed
      */

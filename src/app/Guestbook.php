@@ -15,10 +15,17 @@ use Detectify\Support\Session;
 use Detectify\Traits\Config;
 use Detectify\Traits\Env;
 
+/**
+ * The application class
+ * @package Detectify
+ */
 class Guestbook
 {
     use Env,Config;
 
+    /**
+     * Environment file path
+     */
     const ENV_FILE_PATH = '../.env';
 
     /**
@@ -62,6 +69,11 @@ class Guestbook
         $handlerObject->{$action}($request);
     }
 
+    /**
+     * Returns full class name (includes namespace)
+     * @param $className
+     * @return string
+     */
     public function getHandlerClassName($className)
     {
         $namespace = "Detectify\Handlers";

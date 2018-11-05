@@ -8,10 +8,15 @@
 
 namespace Detectify\Support;
 
-
+/**
+ * Essentially this class should be called for any type of response returned to the caller
+ * Class Response
+ * @package Detectify\Support
+ */
 class Response
 {
     /**
+     * Print json
      * @param @array $data
      * @param int $responseCode
      */
@@ -22,6 +27,7 @@ class Response
     }
 
     /**
+     * Checks if the object is an exception
      * @param $data
      * @return bool
      */
@@ -31,6 +37,7 @@ class Response
     }
 
     /**
+     * Intended to render exception with some nice UI
      * @param \Exception $exception
      */
     public static function renderException($exception)
@@ -40,6 +47,7 @@ class Response
     }
 
     /**
+     * Redirects requests
      * @param $path
      * @param int $responseCode
      */

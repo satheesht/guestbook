@@ -12,7 +12,7 @@ namespace Detectify\Models;
 class Sanitizer
 {
     /**
-     * Expects associative array
+     * Expects associative array, sanitizes the values
      * @param $link
      * @param $data
      * @return mixed

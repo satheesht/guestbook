@@ -8,19 +8,35 @@
 
 namespace Detectify\Support;
 
-
+/**
+ * All session related actions handled here
+ * Class Session
+ * @package Detectify\Support
+ */
 class Session
 {
+    /**
+     * Current instance
+     * @var
+     */
     private static $instance;
 
+    /**
+     * Current session state
+     * @var bool
+     */
     private $sessionState = false;
 
-    //12 hours session life
+    /**
+     * Session lifetime config
+     * @var array
+     */
     private $sessionConfig = [
         'cookie_lifetime' => 43200
     ];
 
     /**
+     * Returns instance of session
      * @return Session
      */
     public static function getInstance()
@@ -33,6 +49,7 @@ class Session
     }
 
     /**
+     * Starts a session
      * @return bool
      */
     public function startSession()
@@ -43,6 +60,8 @@ class Session
     }
 
     /**
+     * Returns user id (means the user logged in : which is ensured from
+     * Login controller, Auth action)
      * @return mixed
      */
     public static function getUserId()
@@ -51,6 +70,7 @@ class Session
     }
 
     /**
+     * Sets a value to session
      * @param $name
      * @param $value
      */
@@ -60,6 +80,7 @@ class Session
     }
 
     /**
+     * Returns a value from session by name
      * @param $name
      * @return mixed
      */
@@ -69,6 +90,7 @@ class Session
     }
 
     /**
+     * Removes a value from session
      * @param $name
      */
     public static function delete($name)

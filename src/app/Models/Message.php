@@ -32,6 +32,11 @@ class Message extends Sanitizer
         return $this->connection->query($query);
     }
 
+    /**
+     * Edits a message
+     * @param $data
+     * @return bool|\mysqli_result
+     */
     public function editMessage($data)
     {
         $data = $this->sanitizeFields($this->connection, $data);
@@ -39,6 +44,11 @@ class Message extends Sanitizer
         return $this->connection->query($query);
     }
 
+    /**
+     * Deletes a message
+     * @param $data
+     * @return bool|\mysqli_result
+     */
     public function deleteMessage($data)
     {
         $data = $this->sanitizeFields($this->connection, $data);
@@ -46,6 +56,11 @@ class Message extends Sanitizer
         return $this->connection->query($query);
     }
 
+    /**
+     * Replies to a message
+     * @param $data
+     * @return bool|\mysqli_result
+     */
     public function replyMessage($data)
     {
         $data = $this->sanitizeFields($this->connection, $data);
@@ -53,6 +68,10 @@ class Message extends Sanitizer
         return $this->connection->query($query);
     }
 
+    /**
+     * Gets all available message
+     * @return mixed
+     */
     public function getAll()
     {
         $query = 'SELECT a.text,a.id,b.firstname,b.lastname FROM messages a LEFT JOIN users b ON a.id_user=b.id';
@@ -60,6 +79,11 @@ class Message extends Sanitizer
         return $result->fetch_all();
     }
 
+    /**
+     * Gets replies of a message
+     * @param $data
+     * @return mixed
+     */
     public function getReplies($data)
     {
         $data = $this->sanitizeFields($this->connection, $data);
