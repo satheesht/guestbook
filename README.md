@@ -24,4 +24,4 @@ Access the application:
   - The MySQL is exposed to a port 33061
   - You can access the application here ``https://localhost/home``
 
-**NOTE: No thirdparty library or framework used tod dvelop this application. I got a little help from composer to autoload classes ;)**
+**NOTE: No thirdparty library or framework used to develop this application. I got a little help from composer to autoload classes ;)**
